@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "leclerc-parser"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Taylor <danny.taylor@live.fr>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+beautifulsoup4 = "^4.9.3"
+pandas = "^1.2.3"
+
+[tool.poetry.dev-dependencies]
+black = "^21.9b0"
+isort = "^5.9.3"
+pylint = "^2.11.1"
+
+[tool.poetry.scripts]
+code-style = "scripts.code_style:check_code_style"
+
+[tool.pylint."messages control"]
+ignore = [".venv"]
+disable = [
+  # Broken, see https://github.com/PyCQA/pylint/issues/3507
+  "isinstance-second-argument-not-valid-type",
+  # Do not force docstrings
+  "missing-class-docstring",
+  "missing-function-docstring",
+  "missing-module-docstring",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
